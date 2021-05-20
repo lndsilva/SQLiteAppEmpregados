@@ -19,13 +19,13 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String NOME_BANCO_DE_DADOS = "bdEmpregados";
+    public static final String NOME_BANCO_DE_DADOS = "bdEmpregados.db";
 
     TextView lblEmpregados;
     EditText txtNomeEmpregado, txtSalarioEmpregado;
     Spinner spnDepartamentos;
 
-    Button btnAdcionaFuncionario;
+    Button btnAdicionaFuncionario;
 
     SQLiteDatabase meuBancoDeDados;
 
@@ -34,19 +34,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         lblEmpregados = findViewById(R.id.lblVisualizaFuncionario);
         txtNomeEmpregado = findViewById(R.id.txtNomeNovoFuncionario);
         txtSalarioEmpregado = findViewById(R.id.txtNovoSalarioFuncionario);
         spnDepartamentos = findViewById(R.id.spnDepartamentos);
 
-        btnAdcionaFuncionario = findViewById(R.id.btnAdicionarfuncionario);
+        btnAdicionaFuncionario = findViewById(R.id.btnAdicionarfuncionario);
 
-        btnAdcionaFuncionario.setOnClickListener(this);
+        btnAdicionaFuncionario.setOnClickListener(this);
 
         lblEmpregados.setOnClickListener(this);
 
         //Criando banco de dados
-
         meuBancoDeDados = openOrCreateDatabase(NOME_BANCO_DE_DADOS, MODE_PRIVATE, null);
 
         criarTabelaEmpregado();
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Neste método vamos fazer a operação para adicionar os funcionario
     private void adicionarEmpregado() {
 
-        Locale meuLocal = new Locale("pt", "BR");
+        Locale meuLocal = new Locale("pt-br", "BR");
         NumberFormat nf = NumberFormat.getCurrencyInstance(meuLocal);
 
 
@@ -106,7 +106,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Toast.makeText(getApplicationContext(), "Funcionário adicionado com sucesso!!!", Toast.LENGTH_SHORT).show();
 
+            limparCadastro();
+
         }
+
+    }
+
+    //Limpar os campos apos cadastro
+    public void limparCadastro() {
+
+        txtNomeEmpregado.setText("");
+        txtSalarioEmpregado.setText("");
+        txtNomeEmpregado.requestFocus();
 
     }
 
@@ -114,7 +125,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAdicionarfuncionario:
-
                 adicionarEmpregado();
                 break;
             case R.id.lblVisualizaFuncionario:
@@ -129,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // então, só criará a tabela quando a tabela ainda não estiver criada
 
     private void criarTabelaEmpregado() {
+
         meuBancoDeDados.execSQL(
                 "CREATE TABLE IF NOT EXISTS funcionarios (" +
                         "id integer PRIMARY KEY AUTOINCREMENT," +

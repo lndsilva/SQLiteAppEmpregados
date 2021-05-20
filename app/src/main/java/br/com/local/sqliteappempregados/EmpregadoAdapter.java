@@ -54,7 +54,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
         txtViewSalario.setText(String.valueOf(empregados.getSalario()));
         txtViewDataEntrada.setText(empregados.getDataEntrada());
 
-        Button btnExcluir = view.findViewById(R.id.btnExcluirViewFunciorio);
+        Button btnExcluir = view.findViewById(R.id.btnExcluirViewFuncionario);
         Button btnEditar = view.findViewById(R.id.btnEditarViewFuncionario);
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        //somente vai voltar para tela.
                     }
                 });
                 AlertDialog dialog = builder.create();

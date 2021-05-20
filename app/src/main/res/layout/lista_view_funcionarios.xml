@@ -16,21 +16,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:text="João da Cunha"
+            android:text="Nome do funcionário"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/txtDepartamentoViewfuncionario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Técnico"
+            android:text="Cargo"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/txtSalarioViewFuncionario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="INR 40000"
+            android:text="Salário"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="12/08/2019 10:00:00" />
+            android:text="Data entrada" />
 
     </LinearLayout>
 
@@ -56,11 +56,12 @@
             android:text="Editar" />
 
         <Button
-            android:id="@+id/btnExcluirViewFunciorio"
+            android:id="@+id/btnExcluirViewFuncionario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="#FF5722"
             android:text="Excluir" />
     </LinearLayout>
+
 </LinearLayout>
