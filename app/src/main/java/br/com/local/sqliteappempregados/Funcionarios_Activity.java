@@ -23,6 +23,7 @@ public class Funcionarios_Activity extends AppCompatActivity {
         setContentView(R.layout.funcionarios_layout);
 
         listViewEmpregados = findViewById(R.id.listarFuncionariosView);
+
         empregadosList = new ArrayList<>();
 
         meuBancoDeDados = openOrCreateDatabase(MainActivity.NOME_BANCO_DE_DADOS, MODE_PRIVATE, null);
@@ -31,6 +32,7 @@ public class Funcionarios_Activity extends AppCompatActivity {
     }
 
     private void visualizarEmpregadosDatabase() {
+
         Cursor cursorEmpregados = meuBancoDeDados.rawQuery("SELECT * FROM funcionarios", null);
 
 
@@ -48,7 +50,7 @@ public class Funcionarios_Activity extends AppCompatActivity {
         cursorEmpregados.close();
 
         //Verificar o layout
-        empregadoAdapter = new EmpregadoAdapter(this,R.layout.lista_view_funcionarios,empregadosList,meuBancoDeDados);
+        empregadoAdapter = new EmpregadoAdapter(this, R.layout.lista_view_funcionarios, empregadosList, meuBancoDeDados);
 
         listViewEmpregados.setAdapter(empregadoAdapter);
     }

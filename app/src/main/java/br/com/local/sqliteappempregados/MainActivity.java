@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String NOME_BANCO_DE_DADOS = "bdEmpregados.db";
+    public static final String NOME_BANCO_DE_DADOS = "dbEmpregados.db";
 
     TextView lblEmpregados;
     EditText txtNomeEmpregado, txtSalarioEmpregado;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         lblEmpregados = findViewById(R.id.lblVisualizaFuncionario);
         txtNomeEmpregado = findViewById(R.id.txtNomeNovoFuncionario);
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Criando banco de dados
         meuBancoDeDados = openOrCreateDatabase(NOME_BANCO_DE_DADOS, MODE_PRIVATE, null);
 
+        //Criar as tabelas para o banco de dados
         criarTabelaEmpregado();
     }
 
@@ -73,16 +73,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Neste método vamos fazer a operação para adicionar os funcionario
     private void adicionarEmpregado() {
 
-        Locale meuLocal = new Locale("pt-br", "BR");
-        NumberFormat nf = NumberFormat.getCurrencyInstance(meuLocal);
-
-
         String nomeEmpr = txtNomeEmpregado.getText().toString().trim();
         String salarioEmpr = txtSalarioEmpregado.getText().toString().trim();
         String deptoEmpr = spnDepartamentos.getSelectedItem().toString();
 
         // obtendo o horário atual para data de inclusão
-
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String dataEntrada = simpleDateFormat.format(calendar.getTime());
@@ -139,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // então, só criará a tabela quando a tabela ainda não estiver criada
 
     private void criarTabelaEmpregado() {
-
         meuBancoDeDados.execSQL(
                 "CREATE TABLE IF NOT EXISTS funcionarios (" +
                         "id integer PRIMARY KEY AUTOINCREMENT," +
