@@ -22,11 +22,13 @@ import java.util.List;
 
 public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
 
+    //Variaveis globais
     Context mCtx;
     int listaLayoutRes;
     List<Empregados> listaEmpregados;
     SQLiteDatabase meuBancoDeDados;
 
+    //Construtor da classe
     public EmpregadoAdapter(Context mCtx, int listaLayoutRes, List<Empregados> listaEmpregados, SQLiteDatabase meuBancoDeDados) {
         super(mCtx, listaLayoutRes, listaEmpregados);
 
@@ -82,6 +84,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //somente vai voltar para tela.
+                        recarregarEmpregadosDB();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -109,7 +112,9 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
         txtEditarFuncionario.setText(empregados.getNome());
         txtEditarSalario.setText(String.valueOf(empregados.getSalario()));
 
+        //Criando o janela de diálogo
         final AlertDialog dialog = builder.create();
+        //Mostrando a janela de diálogo
         dialog.show();
 
         view.findViewById(R.id.btnAlterarFuncionario).setOnClickListener(new View.OnClickListener() {
