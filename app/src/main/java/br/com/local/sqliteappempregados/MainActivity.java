@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     SQLiteDatabase meuBancoDeDados;
 
+
+    //Create Database, Table
+    //Insert, Select, Update, Delete
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAdicionaFuncionario = findViewById(R.id.btnAdicionarfuncionario);
 
         btnAdicionaFuncionario.setOnClickListener(this);
+
 
         lblEmpregados.setOnClickListener(this);
 
@@ -81,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String dataEntrada = simpleDateFormat.format(calendar.getTime());
-
 
         //validando entrada
         if (verificarEntrada(nomeEmpr, salarioEmpr)) {
@@ -143,6 +147,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "salario double NOT NULL );"
         );
     }
-
 
 }

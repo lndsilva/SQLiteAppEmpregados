@@ -71,7 +71,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
                 builder.setTitle("Deseja excluir?");
-                builder.setIcon(android.R.drawable.ic_notification_clear_all);
+                builder.setIcon(R.drawable.outline_cancel);
                 builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -84,7 +84,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //somente vai voltar para tela.
-                        recarregarEmpregadosDB();
+                       recarregarEmpregadosDB();;
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -98,6 +98,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
     }
 
     public void alterarEmpregado(final Empregados empregados) {
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
 
         LayoutInflater inflater = LayoutInflater.from(mCtx);

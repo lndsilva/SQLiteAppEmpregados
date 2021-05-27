@@ -35,7 +35,6 @@ public class Funcionarios_Activity extends AppCompatActivity {
 
         Cursor cursorEmpregados = meuBancoDeDados.rawQuery("SELECT * FROM funcionarios", null);
 
-
         if (cursorEmpregados.moveToFirst()) {
             do {
                 empregadosList.add(new Empregados(
