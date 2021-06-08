@@ -31,6 +31,7 @@ public class Funcionarios_Activity extends AppCompatActivity {
         visualizarEmpregadosDatabase();
     }
 
+    //Executar um select na tabela do banco de dados
     private void visualizarEmpregadosDatabase() {
 
         Cursor cursorEmpregados = meuBancoDeDados.rawQuery("SELECT * FROM funcionarios", null);
@@ -51,6 +52,7 @@ public class Funcionarios_Activity extends AppCompatActivity {
         //Verificar o layout
         empregadoAdapter = new EmpregadoAdapter(this, R.layout.lista_view_funcionarios, empregadosList, meuBancoDeDados);
 
+        //carregando o adaptador na listView
         listViewEmpregados.setAdapter(empregadoAdapter);
     }
 }

@@ -17,7 +17,6 @@ public class Empregados {
     }
 
     //criando os métodos de acesso getter e setter
-
     public int getId() {
         return id;
     }

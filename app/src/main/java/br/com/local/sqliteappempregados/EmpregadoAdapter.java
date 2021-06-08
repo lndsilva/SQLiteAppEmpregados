@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
@@ -37,6 +38,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
         this.listaEmpregados = listaEmpregados;
         this.meuBancoDeDados = meuBancoDeDados;
     }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -46,18 +48,22 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
 
         final Empregados empregados = listaEmpregados.get(position);
 
-        TextView txtViewNome = view.findViewById(R.id.txtNomeViewFuncionario);
-        TextView txttViewDepto = view.findViewById(R.id.txtDepartamentoViewfuncionario);
-        TextView txtViewSalario = view.findViewById(R.id.txtSalarioViewFuncionario);
-        TextView txtViewDataEntrada = view.findViewById(R.id.txtEntradaviewFuncionario);
+        TextView txtViewNome, txttViewDepto, txtViewSalario, txtViewDataEntrada;
+
+        txtViewNome = view.findViewById(R.id.txtNomeViewFuncionario);
+        txttViewDepto = view.findViewById(R.id.txtDepartamentoViewfuncionario);
+        txtViewSalario = view.findViewById(R.id.txtSalarioViewFuncionario);
+        txtViewDataEntrada = view.findViewById(R.id.txtEntradaviewFuncionario);
 
         txtViewNome.setText(empregados.getNome());
         txttViewDepto.setText(empregados.getDepto());
         txtViewSalario.setText(String.valueOf(empregados.getSalario()));
         txtViewDataEntrada.setText(empregados.getDataEntrada());
 
-        Button btnExcluir = view.findViewById(R.id.btnExcluirViewFuncionario);
-        Button btnEditar = view.findViewById(R.id.btnEditarViewFuncionario);
+        Button btnExcluir, btnEditar;
+
+        btnExcluir = view.findViewById(R.id.btnExcluirViewFuncionario);
+        btnEditar = view.findViewById(R.id.btnEditarViewFuncionario);
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +77,13 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
                 builder.setTitle("Deseja excluir?");
-                builder.setIcon(R.drawable.outline_cancel);
+                builder.setIcon(R.drawable.cancel);
                 builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
                         String sql = "DELETE FROM funcionarios WHERE id = ?";
+
                         meuBancoDeDados.execSQL(sql, new Integer[]{empregados.getId()});
                         recarregarEmpregadosDB();
                     }
@@ -84,7 +92,8 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //somente vai voltar para tela.
-                       recarregarEmpregadosDB();;
+                        recarregarEmpregadosDB();
+
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -149,6 +158,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
 
     }
 
+    //Realizar um select na tabela
     public void recarregarEmpregadosDB() {
         Cursor cursorEmpregados = meuBancoDeDados.rawQuery("SELECT * FROM funcionarios", null);
         if (cursorEmpregados.moveToFirst()) {
@@ -166,4 +176,6 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
         cursorEmpregados.close();
         notifyDataSetChanged();
     }
+
+
 }

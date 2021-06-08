@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String NOME_BANCO_DE_DADOS = "dbEmpregados.db";
+    public static final String NOME_BANCO_DE_DADOS = "dbTI97.db";
 
     TextView lblEmpregados;
     EditText txtNomeEmpregado, txtSalarioEmpregado;
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btnAdicionaFuncionario;
 
+    //Declarando a variavel que terá todos os comandos do SQLite
     SQLiteDatabase meuBancoDeDados;
-
 
     //Create Database, Table
     //Insert, Select, Update, Delete
@@ -45,9 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnAdicionaFuncionario = findViewById(R.id.btnAdicionarfuncionario);
 
+        //Irá pegar a ação de click nos dois componentes
         btnAdicionaFuncionario.setOnClickListener(this);
-
-
         lblEmpregados.setOnClickListener(this);
 
         //Criando banco de dados
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Criar as tabelas para o banco de dados
         criarTabelaEmpregado();
+
     }
 
 //Este método irá validar o nome e o salário
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //validando entrada
         if (verificarEntrada(nomeEmpr, salarioEmpr)) {
+
 
             String insertSQL = "INSERT INTO funcionarios (" +
                     "nome, " +
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Eu adicionei IF NOT EXISTS ao SQL
     // então, só criará a tabela quando a tabela ainda não estiver criada
 
+
     private void criarTabelaEmpregado() {
         meuBancoDeDados.execSQL(
                 "CREATE TABLE IF NOT EXISTS funcionarios (" +
@@ -146,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "dataEntrada datetime NOT NULL," +
                         "salario double NOT NULL );"
         );
+
     }
 
 }
