@@ -77,7 +77,7 @@ public class EmpregadoAdapter extends ArrayAdapter<Empregados> {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
                 builder.setTitle("Deseja excluir?");
-                builder.setIcon(R.drawable.cancel);
+                builder.setIcon(R.drawable.outline_cancel);
                 builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

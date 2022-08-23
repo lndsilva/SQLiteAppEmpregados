@@ -25,7 +25,8 @@
             android:id="@+id/txtNomeNovoFuncionario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Entre com o nome do empregado" />
+            android:hint="Entre com o nome do empregado"
+            android:minHeight="48dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
             android:id="@+id/spnDepartamentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/departamentos" />
+            android:entries="@array/departamentos"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/txtNovoSalarioFuncionario"
@@ -46,7 +48,8 @@
             android:layout_height="wrap_content"
             android:digits="0123456789"
             android:hint="Entre com o salário do funcionário"
-            android:inputType="number" />
+            android:inputType="number"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/btnAdicionarfuncionario"
